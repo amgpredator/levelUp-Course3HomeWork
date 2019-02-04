@@ -15,7 +15,7 @@ public class Users {
 
     @Id
     @GeneratedValue
-    private Long id;
+    private Long userId;
 
     @Column(nullable = false, unique = true)
     private String login;

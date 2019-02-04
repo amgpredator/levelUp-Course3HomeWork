@@ -5,12 +5,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "car")
@@ -20,10 +18,14 @@ import java.util.Date;
 public class Cars {
 
     @Id
+    @GeneratedValue
     private Long carId;
 
     @Column(name = "car_brand")
     private String carBrand;
+
+    @Column(name = "car_model")
+    private String carModel;
 
     @Column(name = "car_year_manufactures")
     private Date carYearManufactures;
@@ -34,8 +36,15 @@ public class Cars {
     @Column(name = "car_color")
     private String carColor;
 
+    @Column(name = "car_volume_engine")
+    private Double carVolumeEngine;
+
     @Column(name = "car_cost")
     private BigDecimal carCost;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "detailId")
+    private List<CarDetails> carDetails;
 
 
 }
