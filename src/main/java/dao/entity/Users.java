@@ -10,7 +10,6 @@ import javax.persistence.*;
 @Table(name = "users")
 @Getter
 @Setter
-@NoArgsConstructor
 public class Users {
 
     @Id
@@ -22,4 +21,12 @@ public class Users {
 
     @Column(nullable = false, unique = true)
     private String password;
+
+    public Users() {
+    }
+
+    public Users(String login, String password) {
+        this.login = login;
+        this.password = password;
+    }
 }

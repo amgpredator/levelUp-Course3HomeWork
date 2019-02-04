@@ -14,29 +14,28 @@ import java.util.List;
 @Table(name = "car")
 @Getter
 @Setter
-@NoArgsConstructor
 public class Cars {
 
     @Id
     @GeneratedValue
     private Long carId;
 
-    @Column(name = "car_brand")
+    @Column(name = "car_brand",nullable = false, unique = true)
     private String carBrand;
 
-    @Column(name = "car_model")
+    @Column(name = "car_model",nullable = false)
     private String carModel;
 
-    @Column(name = "car_year_manufactures")
-    private Date carYearManufactures;
+    @Column(name = "car_year_manufactures",nullable = false)
+    private Integer carYearManufactures;
 
-    @Column(name = "car_country")
+    @Column(name = "car_country",nullable = false)
     private String carCountry;
 
-    @Column(name = "car_color")
+    @Column(name = "car_color",nullable = false)
     private String carColor;
 
-    @Column(name = "car_volume_engine")
+    @Column(name = "car_volume_engine",nullable = false)
     private Double carVolumeEngine;
 
     @Column(name = "car_cost")
@@ -46,5 +45,16 @@ public class Cars {
     @JoinColumn(name = "detailId")
     private List<CarDetails> carDetails;
 
+    public Cars() {
+    }
 
+    public Cars(String carBrand, String carModel, Integer carYearManufactures, String carCountry, String carColor, Double carVolumeEngine, BigDecimal carCost) {
+        this.carBrand = carBrand;
+        this.carModel = carModel;
+        this.carYearManufactures = carYearManufactures;
+        this.carCountry = carCountry;
+        this.carColor = carColor;
+        this.carVolumeEngine = carVolumeEngine;
+        this.carCost = carCost;
+            }
 }
