@@ -17,7 +17,8 @@ import java.util.List;
 public class Cars {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="car__id_seq")
+    @SequenceGenerator(name="car__id_seq",sequenceName="car__id_seq",allocationSize=1)
     private Long carId;
 
     @Column(name = "car_brand",nullable = false, unique = true)

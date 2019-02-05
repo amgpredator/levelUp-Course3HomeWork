@@ -12,7 +12,8 @@ import javax.persistence.*;
 public class TypesDetails {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="type_details_id_seq")
+    @SequenceGenerator(name="type_details_id_seq",sequenceName="type_details_id_seq",allocationSize=1)
     private Long typeId;
 
     @Column(name = "name_type")

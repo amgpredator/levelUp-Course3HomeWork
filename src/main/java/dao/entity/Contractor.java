@@ -14,7 +14,8 @@ import java.util.List;
 public class Contractor {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="contractor_id_seq")
+    @SequenceGenerator(name="contractor_id_seq",sequenceName="contractor_id_seq",allocationSize=1)
     private Long contractorId;
 
     @Column(name = "name",nullable = false, unique = true)
